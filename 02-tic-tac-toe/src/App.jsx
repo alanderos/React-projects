@@ -1,4 +1,4 @@
-import { Children, useState } from 'react'
+import { Children, useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,8 +8,10 @@ import { TURNS,WINNER_COMBOS } from './constants'
 import { checkWinnerFrom, checkEndGame } from './logic/board'
 import {WinnerModal} from './components/WinnerModal'
 import { saveGameStoraje, resetGameStoraje } from './logic/storage'
+
+
 function App() {
-  console.log('render')
+  //console.log('render')
   //const [board, setBoard] = useState(Array(9).fill(null)) //useState(['x','x','x','o','o','o','x','o','x'])
   const [board, setBoard] = useState(()=>{
     console.log('inicializar estado del board')
@@ -60,6 +62,12 @@ function App() {
     }
     
   }
+
+  /*useEffect(()=>{
+    console.log('useEffect')
+    saveGameStoraje({board:newBoard, turn:newTurn})
+  },[turn, board])
+  */
 
   return (
     <main className='board'>
